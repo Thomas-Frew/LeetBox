@@ -15,8 +15,20 @@ export const getProblems = /* GraphQL */ `
       questions: data {
         acRate
         difficulty
+        freqBar
+        questionId: questionFrontendId
+        isFavor
+        isPaidOnly
+        status
         title
         titleSlug
+        topicTags {
+          id
+          name
+          slug
+        }
+        hasSolution
+        hasVideoSolution
       }
     }
   }

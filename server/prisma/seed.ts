@@ -1,11 +1,15 @@
-import { getProblems } from "./graphql/queries";
-import { ProblemsResponse } from "./graphql/types";
-import { graphqlEndpoint } from "./graphql/constants";
+import { getProblems } from "../src/leetcode/queries";
+import { ProblemsResponse } from "../src/leetcode/types";
+import { graphqlEndpoint } from "../src/leetcode/constants";
 
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "@prisma/client";
 
-const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! });
+import dotenv from "dotenv";
+import { expand } from "dotenv-expand";
+expand(dotenv.config({ path: "../.env" }));
+
+const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
 
 const prisma = new PrismaClient({ adapter });
 import axios from "axios";
@@ -32,9 +36,9 @@ async function main() {
   const { data } = response.data as { data: ProblemsResponse };
 
   const questions = data.problemsetQuestionList.questions
-    .filter((q) => !q.paidOnly)
+    .filter((q) => !q.isPaidOnly)
     .map((q) => ({
-      id: Number(q.frontendQuestionId),
+      id: +q.questionId,
       title: q.title,
       titleSlug: q.titleSlug,
       difficulty: q.difficulty,

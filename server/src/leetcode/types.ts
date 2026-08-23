@@ -6,10 +6,10 @@ export interface ProblemsResponse {
 }
 
 export interface ProblemsResponseQuestion {
+  questionId: string;
+  isPaidOnly: boolean;
   acRate: number;
   difficulty: "Easy" | "Medium" | "Hard";
-  frontendQuestionId: string;
-  paidOnly: boolean;
   title: string;
   titleSlug: string;
 }

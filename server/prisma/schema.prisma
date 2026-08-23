@@ -11,4 +11,5 @@ model Question {
   id          Int            @id
   title       String         @unique
   titleSlug   String         @unique
+  difficulty  String
 }

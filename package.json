@@ -9,7 +9,7 @@
   },
   "scripts": {
     "compose": "docker compose",
-    "compose:prod": "docker compose -f docker-compose.yml -f docker-compose.prod.yml",
+    "compose:prod": "docker compose -f docker-compose.yml -f docker-compose-prod.yml",
     "up": "npm run compose -- up -d --wait",
     "down": "npm run compose -- down",
     "nuke": "npm run compose -- down -v",

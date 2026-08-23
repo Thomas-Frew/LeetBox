@@ -9,4 +9,4 @@ COPY server ./server
 RUN npm run db:generate -w server
 RUN npm run build -w server
 
-CMD ["node", "server/dist/app.ts"]
+CMD ["node", "server/dist/src/index.js"]

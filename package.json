@@ -9,7 +9,6 @@
   },
   "scripts": {
     "compose": "docker compose",
-    "compose:prod": "docker compose -f docker-compose.yml -f docker-compose-prod.yml",
     "up": "npm run compose -- up -d --wait",
     "down": "npm run compose -- down",
     "nuke": "npm run compose -- down -v",
@@ -18,13 +17,6 @@
     "preinit": "cp -n .env.example .env; true",
     "init": "npm run up && npm install && npm run db:migrate && npm run db:seed",
     "reset": "npm run nuke && npm run init",
-    "dev": "npm run dev -w server",
-    "prod:build": "npm run compose:prod -- build",
-    "prod:up": "npm run compose:prod -- up -d --wait",
-    "prod:down": "npm run compose:prod -- down",
-    "prod:logs": "npm run compose:prod -- logs -f server",
-    "prod:migrate": "npm run compose:prod -- run --rm server npx prisma migrate deploy --schema server/prisma/schema.prisma",
-    "prod:seed": "npm run compose:prod -- run --rm server npx tsx server/prisma/seed.ts",
-    "deploy": "npm run prod:build && npm run prod:up && npm run prod:migrate"
+    "dev": "npm run dev -w server"
   }
 }

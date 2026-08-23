@@ -1,32 +1,21 @@
-import { getProblems } from "../src/leetcode/queries";
-import { ProblemsResponse } from "../src/leetcode/types";
-import { graphqlEndpoint } from "../src/leetcode/constants";
-
-import { PrismaPg } from "@prisma/adapter-pg";
-import { PrismaClient } from "@prisma/client";
-
-import dotenv from "dotenv";
-import { expand } from "dotenv-expand";
-expand(dotenv.config({ path: "../.env" }));
-
-const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
-
-const prisma = new PrismaClient({ adapter });
 import axios from "axios";
 
+import { prisma } from "../src/lib/db.js";
+import { getProblems } from "../src/leetcode/queries.js";
+import { graphqlEndpoint } from "../src/leetcode/constants.js";
+import type { ProblemsResponse } from "../src/leetcode/types.js";
+
 async function main() {
-  let reqBody = {
+  const reqBody = {
     query: getProblems,
     variables: { categorySlug: "", skip: 0, limit: 100, filters: {} },
   };
 
-  let headers = {
-    "Content-Type": "application/json",
-    Referer: "https://leetcode.com",
-  };
-
-  let response = await axios.post(graphqlEndpoint, reqBody, {
-    headers: headers,
+  const response = await axios.post(graphqlEndpoint, reqBody, {
+    headers: {
+      "Content-Type": "application/json",
+      Referer: "https://leetcode.com",
+    },
   });
 
   if (response.data.errors) {
@@ -38,7 +27,7 @@ async function main() {
   const questions = data.problemsetQuestionList.questions
     .filter((q) => !q.isPaidOnly)
     .map((q) => ({
-      id: +q.questionId,
+      id: Number(q.questionId),
       title: q.title,
       titleSlug: q.titleSlug,
       difficulty: q.difficulty,
@@ -46,9 +35,7 @@ async function main() {
 
   await prisma.$transaction([
     prisma.question.deleteMany({}),
-    prisma.question.createMany({
-      data: questions,
-    }),
+    prisma.question.createMany({ data: questions }),
   ]);
 
   console.log(`seeded ${questions.length} questions`);
@@ -59,6 +46,4 @@ main()
     console.error(error);
     process.exit(1);
   })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+  .finally(() => prisma.$disconnect());

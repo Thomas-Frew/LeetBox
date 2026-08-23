@@ -1,2 +1,2 @@
 // TODO: make configurable
-export const graphqlEndpoint = "https://leetcode.com/graphql/"
+export const graphqlEndpoint = "https://leetcode.com/graphql/";

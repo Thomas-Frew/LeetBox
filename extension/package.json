@@ -1,0 +1,20 @@
+{
+  "name": "@leetbox/extension",
+  "type": "module",
+  "devDependencies": {
+    "@crxjs/vite-plugin": "^2.7.1",
+    "@preact/preset-vite": "^2.10.6",
+    "@types/chrome": "^0.2.8",
+    "@types/webextension-polyfill": "^0.12.6",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.2"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "webextension-polyfill": "^0.12.0"
+  }
+}

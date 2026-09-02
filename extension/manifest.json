@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "LeetBox",
+  "version": "0.1.0",
+  "description": "Multiplayer LeetCode rooms",
+  "icons": {
+    "16": "src/assets/favicon/favicon-16x16.png",
+    "32": "src/assets/favicon/favicon-32x32.png"
+  },
+  "host_permissions": ["https://leetcode.com/*"],
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "matches": ["https://leetcode.com/problems/*"],
+      "js": ["src/content.tsx"]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": { "id": "leetbox@thomasfrew.dev", "strict_min_version": "115.0" }
+  }
+}

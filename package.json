@@ -2,9 +2,11 @@
   "name": "leetbox",
   "private": true,
   "workspaces": [
-    "server"
+    "server",
+    "extension"
   ],
   "devDependencies": {
+    "@crxjs/vite-plugin": "^2.7.1",
     "prettier": "^3.9.6"
   },
   "scripts": {

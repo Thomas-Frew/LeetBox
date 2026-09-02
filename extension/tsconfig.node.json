@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "resolveJsonModule": true,
+    "noEmit": true
+  },
+  "include": ["vite.config.ts"]
+}

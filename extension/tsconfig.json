@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
+    "lib": ["dom", "esnext"],
+    "noEmit": true
+  },
+  "include": ["src/**/*"]
+}

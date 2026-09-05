@@ -1,0 +1,41 @@
+#leetbox-panel {
+  align-self: stretch;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: var(--layer-01);
+  border-radius: var(--sd-radius);
+  border: 1px solid transparent;
+  outline: none;
+  transition: border-color 100ms;
+}
+
+#leetbox-panel.focused {
+  border-color: var(--border-secondary);
+}
+
+#leetbox-handlebar {
+  align-self: stretch;
+  min-width: 4px;
+  flex-shrink: 0;
+  cursor: ew-resize;
+  user-select: none;
+  background: transparent;
+  transition: background 100ms;
+}
+
+#leetbox-handlebar:hover,
+#leetbox-handlebar.dragging {
+  background: var(--blue-60);
+}
+
+#leetbox-overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 100;
+  cursor: ew-resize;
+}
+
+#leetbox-overlay.active {
+  display: block;
+}

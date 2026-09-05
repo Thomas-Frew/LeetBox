@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-layer-01: var(--layer-01);
+  --color-fill-quaternary: var(--fill-quaternary);
+  --color-fill-tertiary: var(--fill-tertiary);
+  --color-border-tertiary: var(--border-tertiary);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --radius-panel: var(--sd-radius);
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
+
+:host {
+  display: block;
+  height: 100%;
+}

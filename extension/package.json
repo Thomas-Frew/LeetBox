@@ -4,15 +4,19 @@
   "devDependencies": {
     "@crxjs/vite-plugin": "^2.7.1",
     "@preact/preset-vite": "^2.10.6",
+    "@tailwindcss/vite": "^4.3.3",
     "@types/chrome": "^0.2.8",
     "@types/webextension-polyfill": "^0.12.6",
+    "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2",
-    "vite": "^8.2.2"
+    "vite": "^8.2.2",
+    "web-ext": "^10.6.0"
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "typecheck": "tsc --noEmit"
+    "build": "npm run build:chrome && npm run build:firefox",
+    "build:chrome": "TARGET=chrome vite build",
+    "build:firefox": "TARGET=firefox vite build"
   },
   "dependencies": {
     "webextension-polyfill": "^0.12.0"

@@ -8,14 +8,11 @@
     "32": "src/assets/favicon/favicon-32x32.png"
   },
   "host_permissions": ["https://leetcode.com/*"],
-  "permissions": ["storage"],
   "content_scripts": [
     {
       "matches": ["https://leetcode.com/problems/*"],
-      "js": ["src/content.tsx"]
+      "js": ["src/content.tsx"],
+      "css": ["src/public/content.css"]
     }
-  ],
-  "browser_specific_settings": {
-    "gecko": { "id": "leetbox@thomasfrew.dev", "strict_min_version": "115.0" }
-  }
+  ]
 }

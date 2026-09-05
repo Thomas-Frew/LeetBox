@@ -13,3 +13,8 @@ model Question {
   titleSlug   String         @unique
   difficulty  String
 }
+
+model User {
+  id          Int            @id
+  username    String         @unique
+}
